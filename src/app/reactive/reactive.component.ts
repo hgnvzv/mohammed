@@ -13,26 +13,11 @@ export class ReactiveComponent {
     Email: new FormControl('', [Validators.required, Validators.email]),
     textarea: new FormControl('', Validators.required),
     choos: new FormControl('', Validators.required),
-    rating: new FormControl(5, Validators.required)
+    rating: new FormControl(5, [Validators.required,Validators.min(5)])
   });
 
-  get UserName() { return this.form.get('UserName'); }
-  get password() { return this.form.get('password'); }
-  get Email() { return this.form.get('Email'); }
-  get textarea() { return this.form.get('textarea'); }
-  get choos() { return this.form.get('choos'); }
 
-  getRatingMessage(): string {
-    const ratingControl = this.form.get('rating');
-
-    if (!ratingControl?.touched) {
-      return '';
-    }
-    const rating = ratingControl.value;
-    if (rating >= 5) {
-      return 'Thank you';
-    } else {
-      return 'We will work to develop that';
-    }
+  gtevalue(value:any){
+   return this.form.get(value)
   }
 }

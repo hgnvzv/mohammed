@@ -7,11 +7,27 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./form1.component.css']
 })
 export class Form1Component {
-  form: FormGroup;
+  form: FormGroup = {} as FormGroup;
+  data = { username: "sadig", password: 123 }
 
   constructor(private fb: FormBuilder) {
-    this.form = fb.group({
-      UserName: ['', Validators.required],
+    this.buildForm();
+  }
+
+ 
+  save(){
+    this.buildForm(this.data)
+    if (this.data!=null){""}
+    else{null}
+    this.data!=null ? "" : null
+  }
+
+  buildForm(formData?: any) {
+    this.form = this.fb.group({
+      UserName: [
+        formData != null ? formData.username : '',
+        [Validators.required, Validators.pattern('^[a-zA-Z_ ]+$')]
+      ],
       password: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
       textarea: ['', Validators.required],

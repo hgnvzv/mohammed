@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 @Component({
   selector: 'app-form1',
   templateUrl: './form1.component.html',
@@ -8,31 +9,32 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class Form1Component {
   form: FormGroup = {} as FormGroup;
-  data = { username: "sadig", password: 123 }
-
+  data = { username:"mohammed", password: 123 , Email: 'mohammed@gmail.com',textarea:'abc',choos:2,rating:50 }
+  
   constructor(private fb: FormBuilder) {
-    this.buildForm();
+    this.buildForm(this.data); 
   }
 
- 
+ hidePassword = true;
   save(){
-    this.buildForm(this.data)
-    if (this.data!=null){""}
-    else{null}
-    this.data!=null ? "" : null
+    this.buildForm()
   }
+  show(){
+    this.buildForm(this.data)
+  }
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
+  
 
   buildForm(formData?: any) {
     this.form = this.fb.group({
-      UserName: [
-        formData != null ? formData.username : '',
-        [Validators.required, Validators.pattern('^[a-zA-Z_ ]+$')]
-      ],
-      password: ['', Validators.required],
-      Email: ['', [Validators.required, Validators.email]],
-      textarea: ['', Validators.required],
-      choos: ['', Validators.required],
-      rating: [5, Validators.required]
+      UserName: [formData ? formData.username : '',[Validators.required, Validators.pattern('^[a-zA-Z_]+$')]],
+      password: [formData ? formData.password :'', Validators.required],
+      Email: [formData ? formData.Email :'', [Validators.required, Validators.email]],
+      textarea: [formData ? formData.textarea :'', Validators.required],
+      choos: [formData ? formData.choos : '', Validators.required],
+      rating: [formData ? formData.rating:5, Validators.required]
     });
   }
 

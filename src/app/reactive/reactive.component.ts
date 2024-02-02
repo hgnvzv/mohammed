@@ -7,6 +7,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./reactive.component.css']
 })
 export class ReactiveComponent {
+  data = { username:"mohammed", password: 123 , Email: 'mohammed@gmail.com',textarea:'abc',choos:2,rating:50 }
   form: FormGroup = new FormGroup({
     UserName: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),

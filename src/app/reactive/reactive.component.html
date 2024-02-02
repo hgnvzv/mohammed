@@ -6,7 +6,7 @@
           <h2 style="color: #e02053;">Reactive Form</h2>
           <div class="form-group">
             <label for="UserName">User Name</label>
-            <input formControlName="UserName" type="text" class="form-control">
+            <input formControlName="UserName" type="text" class="form-control" >
             <div *ngIf="gtevalue('UserName')?.touched&& gtevalue('UserName')?.invalid" class="alert alert-danger">
               <div *ngIf="gtevalue('UserName')?.hasError('required')">User Name is required.</div>
             </div>

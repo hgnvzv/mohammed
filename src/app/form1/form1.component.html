@@ -1,23 +1,39 @@
-<div class="container-fluid" style="padding: 30px;">
+
+  <div class="container-fluid" style="padding: 30px;">
     <div class="row justify-content-center align-items-center" style="height: 80vh;">
       <div class="col-6">
-        <div class="card p-5" >
+        <div class="card p-5">
           <form [formGroup]="form">
             <h2 style="color: #6020e0;">Reactive Form with Bulider form</h2>
             <div class="form-group">
               <label for="UserName">User Name</label>
               <input formControlName="UserName" type="text" class="form-control">
-              <div *ngIf="UserName?.touched && UserName?.invalid" class="alert alert-danger" >
+              <div *ngIf="UserName?.touched && UserName?.invalid" class="alert alert-danger">
                 <div *ngIf="UserName?.hasError('required')">User Name is required.</div>
                 <div *ngIf="UserName?.hasError('pattern')">Please use only letters (a-z, A-Z) and underscore (_) characters.</div>
               </div>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input formControlName="password" type="password" class="form-control">
+              <div class="input-group">
+                <input formControlName="password" [type]="hidePassword ? 'password' : 'text'" class="form-control">
+                <button type="button" class="btn btn-secondary" (click)="togglePasswordVisibility()">
+                  <ng-container *ngIf="hidePassword; else showIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                      <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                      <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                    </svg>
+                  </ng-container>
+                  <ng-template #showIcon>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                      <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
+                      <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
+                    </svg>
+                  </ng-template>
+                </button>
+              </div>
               <div *ngIf="password?.touched && password?.invalid" class="alert alert-danger">
                 <div *ngIf="password?.hasError('required')">Password is required.</div>
-                
               </div>
             </div>
             <div class="form-group">
@@ -62,9 +78,11 @@
               <div class="mt-2">{{ getRatingMessage() }}</div>
             </div>
             <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+            <button type="button" class="btn btn-danger " (click)="show()">Show</button>
           </form>
         </div>
       </div>
     </div>
   </div>
+  
   

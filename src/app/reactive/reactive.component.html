@@ -7,30 +7,30 @@
           <div class="form-group">
             <label for="UserName">User Name</label>
             <input formControlName="UserName" type="text" class="form-control" >
-            <div *ngIf="gtevalue('UserName')?.touched&& gtevalue('UserName')?.invalid" class="alert alert-danger">
-              <div *ngIf="gtevalue('UserName')?.hasError('required')">User Name is required.</div>
+            <div *ngIf="getValue('UserName')?.touched&& getValue('UserName')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('UserName')?.hasError('required')">User Name is required.</div>
             </div>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
             <input formControlName="password" type="password" class="form-control">
-            <div *ngIf="gtevalue('password')?.touched && gtevalue('password')?.invalid" class="alert alert-danger">
-              <div *ngIf="gtevalue('password')?.hasError('required')">Password is required.</div>
+            <div *ngIf="getValue('password')?.touched && getValue('password')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('password')?.hasError('required')">Password is required.</div>
             </div>
           </div>
           <div class="form-group">
             <label for="Email">Email</label>
             <input formControlName="Email" type="email" class="form-control">
-            <div *ngIf="gtevalue('Email')?.touched && gtevalue('Email')?.invalid" class="alert alert-danger">
-              <div *ngIf="gtevalue('Email')?.hasError('required')">Email is required.</div>
-              <div *ngIf="gtevalue('Email')?.hasError('email')">Invalid email format.</div>
+            <div *ngIf="getValue('Email')?.touched && getValue('Email')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('Email')?.hasError('required')">Email is required.</div>
+              <div *ngIf="getValue('Email')?.hasError('email')">Invalid email format.</div>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Write your Notes</label>
             <textarea formControlName="textarea" class="form-control" rows="3"></textarea>
-            <div *ngIf="gtevalue('textarea')?.touched && gtevalue('textarea')?.invalid" class="alert alert-danger">
-              <div *ngIf="gtevalue('textarea')?.hasError('required')">Your notes are important to us.</div>
+            <div *ngIf="getValue('textarea')?.touched && getValue('textarea')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('textarea')?.hasError('required')">Your notes are important to us.</div>
             </div>
           </div>
           <div class="form-group">
@@ -40,8 +40,8 @@
               <option value="2">Good</option>
               <option value="3">Bad</option>
             </select>
-            <div *ngIf="gtevalue('choos')?.touched && gtevalue('choos')?.invalid" class="alert alert-danger">
-              <div *ngIf="gtevalue('choos')?.hasError('required')">Must choose a level.</div>
+            <div *ngIf="getValue('choos')?.touched && getValue('choos')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('choos')?.hasError('required')">Must choose a level.</div>
             </div>
           </div>
           <div class="form-group">
@@ -58,12 +58,13 @@
           <div class="form-group">
             <label for="t1" class="form-label">Satisfaction level</label>
             <input type="range" class="form-range" id="t1" formControlName="rating" min="0" max="10" step=1>
-            <div *ngIf="gtevalue('rating')?.touched && gtevalue('rating')?.invalid" class="alert alert-danger">
-              <div *ngIf="gtevalue('rating')?.hasError('required')">Your notes are important to us.</div>
-              <div *ngIf="gtevalue('rating')?.hasError('min')">Hallo</div>
+            <div *ngIf="getValue('rating')?.touched && getValue('rating')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('rating')?.hasError('required')">Your notes are important to us.</div>
+              <div *ngIf="getValue('rating')?.hasError('min')">Hallo</div>
             </div>
           </div>
-          <button type="submit" class="btn btn-danger">Submit</button>
+          <button type="reset" class="btn btn-danger" (click)="resrtdata()">Reset</button>
+          <button type="button" class="btn btn-primary" (click)="getdata()">show data</button>
         </form>
       </div>
     </div>

@@ -1,0 +1,29 @@
+<form  #f="ngForm" (submit)="f">
+    <div class="form-group">
+      <label for="firstname">name</label>
+      <input pattern="mohammed" minlength="3" maxlength="10" required ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" type="text" class="form-control"> 
+      <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">firstname is required</div> 
+    </div> 
+    <div class="form-group">
+        <label for="text">commit</label>
+        <textarea required ngModel name="op" #op="ngModel" (change)="log(op)" id="text" cols="30" rows="10" class="form-control"></textarea>
+        <div class="alert alert-danger" *ngIf="op.touched && !op.valid">must be reade</div>
+    </div>
+    <div class="checkbox">
+        <label for="">
+            <input type="checkBox" ngModel name="isSubscribed">first check
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="contactMathod">choos one</label>
+        <select  ngModel name="contactMathod" id="contactMathod" class="form-control">
+            <option *ngFor="let mathod of contactMathod" [value]="mathod.id">{{mathod.name}}</option>
+        </select>
+    </div>
+    
+    <button class="btn btn-primary" [disabled]="!f.valid">submit</button>
+
+    <p>
+        {{f.value | json}}
+    </p>
+</form>

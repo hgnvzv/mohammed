@@ -7,6 +7,8 @@ import { ReactiveFormsModule,FormControl,FormGroup, FormsModule } from '@angular
 import { ReactiveComponent } from './reactive/reactive.component';
 import { HeaderComponent } from './header/header.component';
 import { RouterLink } from '@angular/router';
+import { OneComponent } from './one/one.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -15,6 +17,7 @@ import { RouterLink } from '@angular/router';
     Form1Component,
     ReactiveComponent,
     HeaderComponent,
+    OneComponent,
     
   ],
   imports: [
@@ -22,6 +25,7 @@ import { RouterLink } from '@angular/router';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
 
     
     
